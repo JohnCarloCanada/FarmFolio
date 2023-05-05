@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .flex-nav-links {
+    @apply flex items-center gap-x-2;
+  }
+}
