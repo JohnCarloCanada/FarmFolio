@@ -7,3 +7,15 @@
     @apply flex items-center gap-x-2;
   }
 }
+
+@layer base {
+  @font-face {
+    font-family: SegoeUI;
+    src: url(/src/fonts/Segoe-UI.ttf);
+  }
+
+  @font-face {
+    font-family: SegeoUIBold;
+    src: url(/src/fonts/Segoe-UI-Bold.ttf);
+  }
+}

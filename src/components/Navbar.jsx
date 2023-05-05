@@ -12,10 +12,10 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="sticky top-0 w-full h-[50px] px-5 md:px-8 py-8 flex justify-between items-center z-10 bg-white">
+      <nav className="sticky top-0 w-full h-[50px] px-5 md:px-8 py-8 flex justify-between items-center z-10 bg-white drop-shadow-xl">
         <div className="flex items-center gap-x-3">
           <img aria-label="FarmFolio Image" className="w-[40px] h-[40px]" src={Logo} alt="FarmFolio Logo" />
-          <h2 className="font-bold text-[#6cb770]">FarmFolio</h2>
+          <h2 className="font-bold font-SegeoUIBold text-[#6cb770]">FarmFolio</h2>
         </div>
         <ul className="hidden items-center md:flex">
           <li aria-label="Go To Home" className="ml-8 font-semibold hover:text-[#009861] cursor-pointer">
@@ -35,6 +35,7 @@ const Navbar = () => {
         )}
       </nav>
       {/* Mobile Nav */}
+      <div className={!nav ? "hidden" : "fixed md:hidden w-full h-screen bg-black/40 z-10"} />
       <ul
         className={
           !nav
