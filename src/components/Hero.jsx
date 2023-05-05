@@ -16,21 +16,21 @@ const Hero = () => {
             </div>
           </section>
           <section className="mt-10 flex flex-col items-center md:items-end justify-center md:mr-4">
-            <img className="w-[40px] h-[40px]" src={cloudy} alt="cloudy" />
+            <img aria-label="Cloudy Icon" className="w-[40px] h-[40px]" src={cloudy} alt="cloudy" />
             <span className="text-[#fcb313] text-4xl font-bold mt-2">31°C</span>
-            <p className="mt-1 font-semibold">Weather</p>
+            <h2 className="mt-1 font-semibold">Weather</h2>
             <p className="mt-1 font-semibold">Tuesday</p>
             <p className="mt-1 whitespace-nowrap font-semibold">Mostly Sunny</p>
           </section>
         </section>
 
-        <section className="flex w-full items-center md:justify-start justify-center">
+        <aside className="flex w-full items-center md:justify-start justify-center">
           <div className="flex flex-col mt-5 md:mt-24 md:ml-10 w-[241px]">
             <SearchComponent />
             <Button FirstGradient={"from-[#a2cf54]"} SecondGradient={"to-[#089c60]"} Text={"Newly Released"} TextColor={"text-[#ffffff]"} />
             <Button FirstGradient={"from-[#e6f888]"} SecondGradient={"to-[#f9be26]"} Text={"Rice Seed Check"} TextColor={"text-[#112A46]"} />
           </div>
-        </section>
+        </aside>
       </div>
     </main>
   );
