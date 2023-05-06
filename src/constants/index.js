@@ -1,3 +1,4 @@
-import carouselContent from "./carouselContents";
+import { carouselContent, carouselCards } from "./carouselContents";
+import { btnLinks } from "./btnLinks";
 
-export { carouselContent };
+export { carouselContent, carouselCards, btnLinks };

@@ -1,19 +1,10 @@
 import cloudy from "../assets/cloudy.png";
 import { Button, SearchComponent } from "./Utils";
+import { btnLinks } from "../constants";
 
 const Hero = () => {
-  const btnLinks = [
-    {
-      firstGradient: "from-[#a2cf54]",
-      secondGradient: "to-[#089c60]",
-      text: "NEWLY RELEASED",
-      textColor: "text-[#ffffff]",
-    },
-    { firstGradient: "from-[#e6f888]", secondGradient: "to-[#f9be26]", text: "RICE SEED CHECK", textColor: "text-[#112A46]" },
-  ];
-
   return (
-    <main className="bg-[url('/src/assets/bg-image.png')] w-full min-h-[593px] bg-cover bg-bottom bg-no-repeat px-5 md:px-8">
+    <main className="bg-[url('/src/assets/bg-image2.png')] w-full min-h-[593px] bg-cover bg-bottom bg-no-repeat px-5 md:px-8">
       <div className="w-[min(100%,1280px)] mx-auto">
         <section className="flex items-center flex-col md:flex-row justify-between">
           <section className="flex flex-col">
@@ -37,7 +28,7 @@ const Hero = () => {
           <div className="flex flex-col mt-5 md:mt-24 md:ml-10 w-[241px] font-SegeoUI">
             <SearchComponent />
             {btnLinks.map((btn, indx) => (
-              <Button key={indx} FirstGradient={btn.firstGradient} SecondGradient={btn.secondGradient} Text={btn.text} TextColor={btn.textColor} />
+              <Button key={indx} {...btn} />
             ))}
           </div>
         </aside>
