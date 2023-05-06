@@ -6,6 +6,20 @@
   .flex-nav-links {
     @apply flex items-center gap-x-2;
   }
+
+  .mySwiper {
+    @apply relative;
+  }
+
+  .mySwiper::before {
+    @apply block absolute left-0 top-0 z-[9] h-full w-[150px] bg-gradient-to-r from-white to-transparent;
+    content: "";
+  }
+
+  .mySwiper::after {
+    @apply block absolute right-0 top-0 z-[9] h-full w-[150px] bg-gradient-to-l from-white to-transparent;
+    content: "";
+  }
 }
 
 @layer base {

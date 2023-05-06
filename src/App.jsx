@@ -1,4 +1,4 @@
-import { Navbar, Hero } from "./components";
+import { Navbar, Hero, OurTeam, Footer } from "./components";
 import { FarmFolioProvider } from "./context/FarmFolioContext";
 
 function App() {
@@ -7,6 +7,8 @@ function App() {
       <FarmFolioProvider>
         <Navbar />
         <Hero />
+        <OurTeam />
+        <Footer />
       </FarmFolioProvider>
     </>
   );
