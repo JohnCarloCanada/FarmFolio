@@ -3,6 +3,7 @@ import { HiMenuAlt1 } from "react-icons/hi";
 import { AiOutlineClose, AiFillHome, AiOutlineTeam } from "react-icons/ai";
 import { GiPlantSeed } from "react-icons/gi";
 import Logo from "../assets/plantation.png";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
@@ -19,13 +20,13 @@ const Navbar = () => {
         </div>
         <ul className="hidden items-center md:flex">
           <li aria-label="Go To Home" className="ml-8 font-semibold hover:text-[#009861] cursor-pointer">
-            Home
+            <Link to="/">Home</Link>
           </li>
           <li aria-label="Go To Crops" className="ml-8 font-semibold hover:text-[#009861] cursor-pointer">
-            Crops
+            <Link to="/Crops">Crops</Link>
           </li>
           <li aria-label="Go To Team" className="ml-8 font-semibold hover:text-[#009861] cursor-pointer">
-            Team
+            <Link to="/Team">Team</Link>
           </li>
         </ul>
         {!nav ? (
@@ -43,16 +44,22 @@ const Navbar = () => {
             : "fixed md:hidden w-full h-[50%] bg-white z-10 drop-shadow-md flex items-center justify-center flex-col border-t-2 border-green-800 overflow-hidden duration-300 ease-out"
         }
       >
-        <li aria-label="Go To Home" className="font-semibold hover:text-[#009861] cursor-pointer mb-5 flex-nav-links ">
-          <AiFillHome /> Home
+        <li aria-label="Go To Home">
+          <Link className="font-semibold hover:text-[#009861] cursor-pointer mb-5 flex-nav-links" to="/">
+            <AiFillHome /> Home
+          </Link>
         </li>
-        <li aria-label="Go To Crops" className="font-semibold hover:text-[#009861] cursor-pointer mb-5 flex-nav-links ">
-          <GiPlantSeed />
-          Crops
+        <li aria-label="Go To Crops">
+          <Link className="font-semibold hover:text-[#009861] cursor-pointer mb-5 flex-nav-links" to="/Crops">
+            <GiPlantSeed />
+            Crops
+          </Link>
         </li>
-        <li aria-label="Go To Team" className="font-semibold hover:text-[#009861] cursor-pointer mb-5 flex-nav-links ">
-          <AiOutlineTeam />
-          Team
+        <li aria-label="Go To Team">
+          <Link className="font-semibold hover:text-[#009861] cursor-pointer mb-5 flex-nav-links" to="/Team">
+            <AiOutlineTeam />
+            Team
+          </Link>
         </li>
       </ul>
     </>
