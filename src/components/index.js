@@ -5,12 +5,14 @@ const OurTeam = React.lazy(() => import("./OurTeam"));
 const Footer = React.lazy(() => import("./Footer"));
 const Layout = React.lazy(() => import("./Layout"));
 const Missing = React.lazy(() => import("./Missing"));
+const Loader = React.lazy(() => import("./Loader"));
 
 /* import Navbar from "./Navbar";
 import Hero from "./Hero";
 import OurTeam from "./OurTeam";
 import Footer from "./Footer";
 import Layout from "./Layout";
-import Missing from "./Missing"; */
-
-export { Navbar, Hero, OurTeam, Footer, Layout, Missing };
+import Missing from "./Missing";
+import Loader from "./Loader";
+ */
+export { Navbar, Hero, OurTeam, Footer, Layout, Missing, Loader };

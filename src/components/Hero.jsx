@@ -1,7 +1,6 @@
 import cloudy from "../assets/cloudy.png";
 import { Button, SearchComponent } from "./Utils";
 import { btnLinks } from "../constants";
-import { Suspense } from "react";
 
 const Hero = () => {
   return (
@@ -25,15 +24,11 @@ const Hero = () => {
             <p className="mt-1 whitespace-nowrap font-normal">Mostly Sunny</p>
           </section>
         </section>
-        <aside className="flex w-full items-center md:justify-start justify-center">
+        <aside className="flex w-full items-center md:justify-start justify-center mb-10 md:mb-0">
           <div className="flex flex-col mt-5 md:mt-24 md:ml-10 w-[241px] font-SegeoUI">
-            <Suspense fallback={<div>Loading...</div>}>
-              <SearchComponent />
-            </Suspense>
+            <SearchComponent />
             {btnLinks.map((btn, indx) => (
-              <Suspense key={indx} fallback={<div>Loading...</div>}>
-                <Button {...btn} />
-              </Suspense>
+              <Button key={indx} {...btn} />
             ))}
           </div>
         </aside>
