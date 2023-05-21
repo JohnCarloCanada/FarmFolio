@@ -1,13 +1,8 @@
 import { OurTeam } from "../components";
-import { useState, useEffect } from "react";
+import useSetTitle from "../hooks/useSetTitle";
 
 const Team = () => {
-  const [title, setTitle] = useState("FarmFolio Team");
-
-  useEffect(() => {
-    document.title = title;
-  }, [title]);
-
+  useSetTitle("FarmFolio Team");
   return <OurTeam />;
 };
 

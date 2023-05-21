@@ -1,13 +1,8 @@
 import { Hero } from "../components";
-import { useState, useEffect } from "react";
+import useSetTitle from "../hooks/useSetTitle";
 
 const Home = () => {
-  const [title, setTitle] = useState("FarmFolio");
-
-  useEffect(() => {
-    document.title = title;
-  }, [title]);
-
+  useSetTitle("FarmFolio");
   return <Hero />;
 };
 

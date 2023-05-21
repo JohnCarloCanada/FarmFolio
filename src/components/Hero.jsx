@@ -1,15 +1,29 @@
 import cloudy from "../assets/cloudy.png";
 import { Button, SearchComponent } from "./Utils";
 import { btnLinks } from "../constants";
+import { motion } from "framer-motion";
+import { routeVariants, childVariants } from "../Animations";
 
 const Hero = () => {
   return (
-    <main className="bg-[url('/src/assets/bg-image2.png')] w-full min-h-[593px] bg-cover bg-bottom bg-no-repeat px-5 md:px-8">
+    <motion.main
+      variants={routeVariants}
+      initial="initial"
+      animate="final"
+      className="bg-[url('/src/assets/bg-image2.png')] w-full min-h-[593px] bg-cover bg-bottom bg-no-repeat px-5 md:px-8"
+    >
       <div className="w-[min(100%,1280px)] mx-auto">
         <section className="flex items-center flex-col md:flex-row justify-between">
           <section className="flex flex-col">
             <div className="md:w-[min(100%,650px)] md:ml-10">
-              <h1 className="font-SegoeUI text-4xl md:text-5xl text-center md:text-left mt-4">Experience Farming perfection with FarmFolio</h1>
+              <motion.h1
+                variants={childVariants}
+                initial="initial"
+                animate="final"
+                className="font-SegoeUI text-4xl md:text-5xl text-center md:text-left mt-4"
+              >
+                Experience Farming perfection with FarmFolio
+              </motion.h1>
               <p className="font-SegoeUI mt-5 text-base md:text-xl text-center md:text-left text-[#4c4c4c]">
                 A comprehensive catagalog of all your farming needs that shows general information about crops, pests, and procedures for pest control
                 and also displays weather forecast.
@@ -33,7 +47,7 @@ const Hero = () => {
           </div>
         </aside>
       </div>
-    </main>
+    </motion.main>
   );
 };
 

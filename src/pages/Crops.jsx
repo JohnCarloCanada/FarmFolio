@@ -1,13 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import useSetTitle from "../hooks/useSetTitle";
+import { NewlyRealase } from "../components";
 
 const Crops = () => {
-  const [title, setTitle] = useState("FarmFolio Crops");
-
-  useEffect(() => {
-    document.title = title;
-  }, [title]);
-
-  return <div className="text-9xl text-red-800 text-center">CROPS</div>;
+  useSetTitle("FarmFolio Crops");
+  return <NewlyRealase />;
 };
 
 export default Crops;
