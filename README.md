@@ -7,3 +7,4 @@ A comprehensive catagalog of all your farming needs that shows general informati
 - [React](https://react.dev/)
 - [Tailwind](https://react-icons.github.io/react-icons/)
 - [React-Icons](https://tailwindcss.com/)
+- [Framer-Motion](https://www.framer.com/motion/)
