@@ -38,7 +38,7 @@ const Hero = () => {
             <p className="mt-1 whitespace-nowrap font-normal">Mostly Sunny</p>
           </section>
         </section>
-        <aside className="flex w-full items-center md:justify-start justify-center mb-10 md:mb-0">
+        <aside className="flex w-full items-center md:justify-start justify-center pb-10 md:pb-0">
           <div className="flex flex-col mt-5 md:mt-24 md:ml-10 w-[241px] font-SegeoUI">
             <SearchComponent />
             {btnLinks.map((btn, indx) => (

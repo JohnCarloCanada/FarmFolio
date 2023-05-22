@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+/* import FarmFolioContext from "../context/FarmFolioContext"; */
 import { Crops } from "../constants";
 import { motion } from "framer-motion";
 import { routeVariants, childVariants } from "../Animations";
@@ -34,6 +35,8 @@ const CropCards = ({ image, cropName, cropOtherName, scientificName, firstDescri
 };
 
 const NewlyRealease = () => {
+  /*  const { farmFolioData } = useContext(FarmFolioContext); */
+
   return (
     <motion.section variants={routeVariants} initial="initial" animate="final" className="w-full text-center px-5 md:px-8">
       <section className="w-[min(100%,1100px)] mx-auto mt-5 md:mt-10">
