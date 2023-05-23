@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
-/* import FarmFolioContext from "../context/FarmFolioContext"; */
-import { Crops } from "../constants";
+import FarmFolioContext from "../context/FarmFolioContext";
 import { motion } from "framer-motion";
 import { routeVariants, childVariants } from "../Animations";
 
@@ -35,7 +34,7 @@ const CropCards = ({ image, cropName, cropOtherName, scientificName, firstDescri
 };
 
 const NewlyRealease = () => {
-  /*  const { farmFolioData } = useContext(FarmFolioContext); */
+  const { farmFolioData } = useContext(FarmFolioContext);
 
   return (
     <motion.section variants={routeVariants} initial="initial" animate="final" className="w-full text-center px-5 md:px-8">
@@ -56,10 +55,10 @@ const NewlyRealease = () => {
         </div>
 
         <aside className="flex items-start justify-center gap-4 flex-wrap mt-5 mb-5 md:mt-14 md:mb-7">
-          {Crops.map((crop, index) => {
+          {farmFolioData.map((crop, index) => {
             return (
               <CropCards
-                key={index}
+                key={crop._id}
                 index={index}
                 image={crop.image}
                 hoverImage={crop.hoverImage}

@@ -21,7 +21,7 @@ const useAxiosFetch = (baseUrl) => {
       } catch (err) {
         if (isMounted) {
           if (err.name === "AbortError") {
-            console.log("Fetch Aborted:", error.message);
+            console.log("Fetch Aborted:", err.message);
           } else {
             setFetchError(err.message);
             setData([]);
