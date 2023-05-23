@@ -18,6 +18,8 @@ export const FarmFolioProvider = ({ children }) => {
     <FarmFolioContext.Provider
       value={{
         farmFolioData,
+        fetchError,
+        isLoading,
       }}
     >
       {children}
