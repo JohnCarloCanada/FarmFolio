@@ -11,7 +11,12 @@ const CropCards = ({ image, cropName, cropOtherName, scientificName, firstDescri
           index % 2 == 0 ? "border-b-[#66bb6a]" : "border-b-white"
         } duration-150 ease-in delay-150 `}
       >
-        <img className="pb-5 md:pb-6 h-[150px] object-contain group-hover:h-0 duration-150 ease-in" src={image} alt="crop" aria-hidden={true} />
+        <img
+          className="pb-5 md:pb-6 h-[150px] object-contain group-hover:h-0 duration-150 ease-in"
+          src={image}
+          alt={`image of an ${cropName}`}
+          aria-hidden={true}
+        />
         <h3 className={`font-bold text-base ${index % 2 == 0 ? "text-[#66bb6a]" : "text-white"} pb-1 md:pb-2`}>{cropName}</h3>
       </div>
       <div

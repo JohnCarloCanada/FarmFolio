@@ -7,6 +7,7 @@ const Layout = React.lazy(() => import("./Layout"));
 const Missing = React.lazy(() => import("./Missing"));
 const Loader = React.lazy(() => import("./Loader"));
 const NewlyRealase = React.lazy(() => import("./NewlyRealease"));
+const WeatherForecast = React.lazy(() => import("./WeatherForecast"));
 
 /* import Navbar from "./Navbar";
 import Hero from "./Hero";
@@ -16,4 +17,4 @@ import Layout from "./Layout";
 import Missing from "./Missing";
 import Loader from "./Loader";
  */
-export { Navbar, Hero, OurTeam, Footer, Layout, Missing, Loader, NewlyRealase };
+export { Navbar, Hero, OurTeam, Footer, Layout, Missing, Loader, NewlyRealase, WeatherForecast };
