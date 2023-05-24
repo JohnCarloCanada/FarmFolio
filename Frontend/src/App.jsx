@@ -4,6 +4,9 @@ import { Layout, Loader, Missing } from "./components";
 import { Crops, Home, Team } from "./pages";
 import { Suspense } from "react";
 import { AnimatePresence } from "framer-motion";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
 
 function LocationProvider({ children }) {
   return <AnimatePresence>{children}</AnimatePresence>;
@@ -27,13 +30,15 @@ function RoutesWithAnimation() {
 function App() {
   return (
     <>
-      <FarmFolioProvider>
-        <Suspense fallback={<Loader />}>
-          <LocationProvider>
-            <RoutesWithAnimation />
-          </LocationProvider>
-        </Suspense>
-      </FarmFolioProvider>
+      <QueryClientProvider client={queryClient}>
+        <FarmFolioProvider>
+          <Suspense fallback={<Loader />}>
+            <LocationProvider>
+              <RoutesWithAnimation />
+            </LocationProvider>
+          </Suspense>
+        </FarmFolioProvider>
+      </QueryClientProvider>
     </>
   );
 }

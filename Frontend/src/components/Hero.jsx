@@ -1,13 +1,30 @@
 import { Button, SearchComponent } from "./Utils";
-import { WeatherForecast } from "../components";
 import { btnLinks } from "../constants";
 import { motion } from "framer-motion";
 import { routeVariants, childVariants } from "../Animations";
 import { useContext } from "react";
 import FarmFolioContext from "../context/FarmFolioContext";
+import { useQuery } from "@tanstack/react-query";
+import cloudy from "../assets/cloudy.png";
+import { Loader } from "../components";
 
 const Hero = () => {
-  const { weatherData, weatherError: fetchError, weatherIsLoading: isLoading } = useContext(FarmFolioContext);
+  const { latitude, longitude } = useContext(FarmFolioContext);
+  const APIKEY = import.meta.env.VITE_API_KEY;
+  const url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${APIKEY}`;
+
+  const date = new Date();
+  const today = date.getDay();
+  const day = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+  const { isLoading, error, data } = useQuery({
+    queryKey: ["repoData"],
+    queryFn: () => fetch(url).then((res) => res.json()),
+  });
+
+  if (isLoading) return <Loader />;
+
+  if (error) return "An error has occurred: " + error.message;
 
   return (
     <motion.main
@@ -34,10 +51,13 @@ const Hero = () => {
               </p>
             </div>
           </section>
-
-          {weatherData.map((data, index) => (
-            <WeatherForecast key={index} data={data} />
-          ))}
+          <section className="font-SegoeUI mt-10 flex flex-col items-center md:items-end justify-center md:mr-4">
+            <img aria-label="Cloudy Icon" className="w-[40px] h-[40px]" src={cloudy} alt="cloudy" />
+            <span className="text-[#fcb313] text-4xl font-bold mt-2">{Math.round(data.main.temp)}°C</span>
+            <h2 className="mt-1 font-normal">Weather</h2>
+            <p className="mt-1 font-normal">{day[today]}</p>
+            <p className="mt-1 whitespace-nowrap font-normal">{data.weather[0].description}</p>
+          </section>
         </section>
         <aside className="flex w-full items-center md:justify-start justify-center pb-10 md:pb-0">
           <div className="flex flex-col mt-5 md:mt-24 md:ml-10 w-[241px] font-SegeoUI">

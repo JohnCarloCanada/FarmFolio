@@ -35,7 +35,6 @@ const useAxiosFetch = (baseUrl) => {
     fetchData(baseUrl);
 
     return () => {
-      console.log("Axios Re-Rendering");
       isMounted = false;
       controller.abort();
     };
