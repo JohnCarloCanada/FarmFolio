@@ -8,7 +8,7 @@ export const FarmFolioProvider = ({ children }) => {
   const [farmFolioData, setFarmFolioData] = useState([]);
   const [weatherData, setWeatherData] = useState([]);
 
-  const { data, fetchError, isLoading } = useAxiosFetch("http://localhost:3000/api/crops");
+  const { data, fetchError, isLoading } = useAxiosFetch("https://farmfolio.onrender.com/api/crops");
 
   const { coords } = useGetLatandLong();
   const APIKEY = "438e079696f2c7bdbe94ee8181d570b7";
