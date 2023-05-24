@@ -15,7 +15,6 @@ export const FarmFolioProvider = ({ children }) => {
   const url = `https://api.openweathermap.org/data/2.5/weather?lat=${coords.latitude}&lon=${coords.longitude}&units=metric&appid=${APIKEY}`;
 
   const { data: fetchWeatherData, fetchError: weatherError, isLoading: weatherIsLoading } = useAxiosFetch(url);
-  console.log(fetchWeatherData);
 
   useEffect(() => {
     let isMounted = true;
@@ -24,8 +23,11 @@ export const FarmFolioProvider = ({ children }) => {
       setWeatherData([fetchWeatherData]);
     }
 
-    return () => (isMounted = false);
-  }, [data]);
+    return () => {
+      isMounted = false;
+      console.log("Context Re-rendering");
+    };
+  }, [data, fetchWeatherData]);
 
   return (
     <FarmFolioContext.Provider

@@ -34,9 +34,10 @@ const Hero = () => {
               </p>
             </div>
           </section>
-          {isLoading && <p>PLEASE WAIT</p>}
-          {fetchError && !isLoading && <p>PLEASE WAIT</p>}
-          {!fetchError && !isLoading && weatherData.map((data, index) => <WeatherForecast key={index} data={data} />)}
+
+          {weatherData.map((data, index) => (
+            <WeatherForecast key={index} data={data} />
+          ))}
         </section>
         <aside className="flex w-full items-center md:justify-start justify-center pb-10 md:pb-0">
           <div className="flex flex-col mt-5 md:mt-24 md:ml-10 w-[241px] font-SegeoUI">
