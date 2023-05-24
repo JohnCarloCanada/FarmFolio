@@ -62,7 +62,7 @@ Start the server
 
 To run this project, you will need to add the following environment variables to your .env file
 
-Notes: in Backend create a .env file in the root directory or in Backend/ directory and then add or copy paste this:
+Notes: in Backend create an .env file in the root directory or in Backend/ directory and then add or copy paste this:
 
 ```
 port=3000
@@ -70,6 +70,12 @@ port=3000
 CONNECTIONSTRING=mongodb+srv://farmFolio:zi08McBmLv66QRgJ@farmfolio.zkupmoo.mongodb.net/FarmFolio?retryWrites=true&w=majority
 
 NODE_VERSION=14.20.1
+```
+
+Notes: in Frontend create an .env file in the root directory or in Frontend/ directory and then add or copy paste this:
+
+```
+VITE_API_KEY=438e079696f2c7bdbe94ee8181d570b7
 ```
 
 ## Authors
