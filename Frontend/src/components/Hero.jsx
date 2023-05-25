@@ -17,14 +17,19 @@ const Hero = () => {
   const today = date.getDay();
   const day = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
-  const { isLoading, error, data } = useQuery({
-    queryKey: ["repoData"],
-    queryFn: () => fetch(url).then((res) => res.json()),
-  });
+  const { isLoading, error, data } = useQuery(
+    {
+      queryKey: ["repoData"],
+      queryFn: () => fetch(url).then((res) => res.json()),
+    },
+    {
+      staleTime: 60 * (60 * 1000), // 60 mins
+      cacheTime: 60 * (60 * 1000), // 60 mins
+    }
+  );
 
-  if (isLoading) return <Loader />;
-
-  if (error) return "An error has occurred: " + error.message;
+  console.log(error);
+  console.log(isLoading);
 
   return (
     <motion.main
@@ -51,13 +56,18 @@ const Hero = () => {
               </p>
             </div>
           </section>
-          <section className="font-SegoeUI mt-10 flex flex-col items-center md:items-end justify-center md:mr-4">
-            <img aria-label="Cloudy Icon" className="w-[40px] h-[40px]" src={cloudy} alt="cloudy" />
-            <span className="text-[#fcb313] text-4xl font-bold mt-2">{Math.round(data.main.temp)}°C</span>
-            <h2 className="mt-1 font-normal">Weather</h2>
-            <p className="mt-1 font-normal">{day[today]}</p>
-            <p className="mt-1 whitespace-nowrap font-normal">{data.weather[0].description}</p>
-          </section>
+
+          {isLoading && <Loader />}
+          {!isLoading && error && <p>An error has occurred: + {error.message}</p>}
+          {!error && !isLoading && (
+            <section className="font-SegoeUI mt-10 flex flex-col items-center md:items-end justify-center md:mr-4">
+              <img aria-label="Cloudy Icon" className="w-[40px] h-[40px]" src={cloudy} alt="cloudy" />
+              <span className="text-[#fcb313] text-4xl font-bold mt-2">{Math.round(data?.main?.temp)}°C</span>
+              <h2 className="mt-1 font-normal">Weather</h2>
+              <p className="mt-1 font-normal">{day[today]}</p>
+              <p className="mt-1 whitespace-nowrap font-normal">{data?.weather[0]?.description}</p>
+            </section>
+          )}
         </section>
         <aside className="flex w-full items-center md:justify-start justify-center pb-10 md:pb-0">
           <div className="flex flex-col mt-5 md:mt-24 md:ml-10 w-[241px] font-SegeoUI">
