@@ -9,7 +9,7 @@ import cloudy from "../assets/cloudy.png";
 import { Loader } from "../components";
 
 const Hero = () => {
-  const { latitude, longitude } = useContext(FarmFolioContext);
+  const { latitude, longitude, locationError } = useContext(FarmFolioContext);
   const APIKEY = import.meta.env.VITE_API_KEY;
   const url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${APIKEY}`;
 
@@ -17,9 +17,9 @@ const Hero = () => {
   const today = date.getDay();
   const day = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
-  const { isLoading, error, data } = useQuery(
+  const { isLoading, data } = useQuery(
     {
-      queryKey: ["repoData"],
+      queryKey: ["farmFolioData"],
       queryFn: () => fetch(url).then((res) => res.json()),
     },
     {
@@ -27,9 +27,6 @@ const Hero = () => {
       cacheTime: 60 * (60 * 1000), // 60 mins
     }
   );
-
-  console.log(error);
-  console.log(isLoading);
 
   return (
     <motion.main
@@ -57,9 +54,19 @@ const Hero = () => {
             </div>
           </section>
 
-          {isLoading && <Loader />}
-          {!isLoading && error && <p>An error has occurred: + {error.message}</p>}
-          {!error && !isLoading && (
+          {locationError && (
+            <section className="h-32 flex justify-center items-center">
+              <p className="text-red-800 text-2xl font-bold">Message: {locationError}</p>
+            </section>
+          )}
+          {!locationError && isLoading && <Loader />}
+          {!locationError && !isLoading && data && data.message && (
+            <section className="h-32 flex justify-center items-center flex-col text-red-800 text-xl font-bold">
+              <p>Error Code: {data.cod}</p>
+              <p>Message: {data.message}</p>
+            </section>
+          )}
+          {!locationError && !isLoading && data && !data.message && (
             <section className="font-SegoeUI mt-10 flex flex-col items-center md:items-end justify-center md:mr-4">
               <img aria-label="Cloudy Icon" className="w-[40px] h-[40px]" src={cloudy} alt="cloudy" />
               <span className="text-[#fcb313] text-4xl font-bold mt-2">{Math.round(data?.main?.temp)}°C</span>

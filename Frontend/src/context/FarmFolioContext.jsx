@@ -8,7 +8,7 @@ export const FarmFolioProvider = ({ children }) => {
   const [farmFolioData, setFarmFolioData] = useState([]);
   const { data, fetchError, isLoading } = useAxiosFetch("https://farmfolio.onrender.com/api/crops");
 
-  const { coords } = useGetLatandLong();
+  const { coords, error: locationError } = useGetLatandLong();
   const { latitude, longitude } = coords;
 
   useEffect(() => {
@@ -25,6 +25,7 @@ export const FarmFolioProvider = ({ children }) => {
         isLoading,
         latitude,
         longitude,
+        locationError,
       }}
     >
       {children}
