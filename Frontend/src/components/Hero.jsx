@@ -6,7 +6,7 @@ import { useContext } from "react";
 import FarmFolioContext from "../context/FarmFolioContext";
 import { useQuery } from "@tanstack/react-query";
 import cloudy from "../assets/cloudy.png";
-import { Loader } from "../components";
+import { Loader, ErrorHandling } from "../components";
 
 const Hero = () => {
   const { latitude, longitude, locationError } = useContext(FarmFolioContext);
@@ -54,18 +54,9 @@ const Hero = () => {
             </div>
           </section>
 
-          {locationError && (
-            <section className="h-32 flex justify-center items-center">
-              <p className="text-red-800 text-2xl font-bold">Message: {locationError}</p>
-            </section>
-          )}
+          {locationError && <ErrorHandling error={locationError} />}
           {!locationError && isLoading && <Loader />}
-          {!locationError && !isLoading && data && data.message && (
-            <section className="h-32 flex justify-center items-center flex-col text-red-800 text-xl font-bold">
-              <p>Error Code: {data.cod}</p>
-              <p>Message: {data.message}</p>
-            </section>
-          )}
+          {!locationError && !isLoading && data && data.message && <ErrorHandling error={data.message} />}
           {!locationError && !isLoading && data && !data.message && (
             <section className="font-SegoeUI mt-10 flex flex-col items-center md:items-end justify-center md:mr-4">
               <img aria-label="Cloudy Icon" className="w-[40px] h-[40px]" src={cloudy} alt="cloudy" />

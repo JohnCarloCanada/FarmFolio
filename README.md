@@ -1,7 +1,6 @@
-
 # FarmFolio
 
-A comprehensive catagalog of all your farming needs that shows general information about crops, pests, and procedures for pest control and also displays weather forecast.
+Enhance your farming experience with our all-inclusive farming catalog, designed to cater to your every need. Explore a wide range of essential information, meticulously compiled to provide you with comprehensive insights into crops, pests, and effective pest control procedures. Additionally, stay one step ahead with our integrated weather forecast feature, ensuring you are well-prepared for any climatic conditions that may impact your farming activities. Whether you're seeking crop-specific guidance, pest management strategies, or accurate weather predictions, our catalog is your go-to resource for maximizing your farming potential.
 
 ## Tech Stack
 
@@ -24,7 +23,7 @@ Clone the project
 ```bash/cmd
   gh repo clone JohnCarloCanada/FarmFolio or git clone JohnCarloCanada/FarmFolio
 
-  or 
+  or
 
   use Github Desktop and then go to file tab and then clone copy paste this https://github.com/JohnCarloCanada/FarmFolio.git
 ```
@@ -82,7 +81,3 @@ VITE_API_KEY=438e079696f2c7bdbe94ee8181d570b7
 
 - [@JohnCarloCanada](https://github.com/JohnCarloCanada)
 - [ToBeAdded](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
-
-
-
-
