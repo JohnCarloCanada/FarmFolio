@@ -4,7 +4,7 @@ Enhance your farming experience with our all-inclusive farming catalog, designed
 
 ## Tech Stack
 
-**Client:** React, Vite, TailwindCSS, Framer Motion
+**Client:** React, Vite, TailwindCSS, Framer Motion, Tansack React Query, Axios
 
 **Server:** Node, Express, MongoDB
 
