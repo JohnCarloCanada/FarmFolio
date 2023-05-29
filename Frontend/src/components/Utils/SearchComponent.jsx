@@ -1,31 +1,30 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import searchIcon from "../../assets/search.png";
+import FarmFolioContext from "../../context/FarmFolioContext";
 
 const SearchComponent = () => {
-  const [input, setInput] = useState(false);
-  const [inputText, setInputText] = useState("");
-
-  useEffect(() => {
-    !inputText ? setInput(false) : setInput(true);
-  }, [inputText]);
-
-  const handleClick = () => {
-    setInput((curr) => !curr);
-  };
+  const { search, setSearch } = useContext(FarmFolioContext);
 
   return (
-    <form className="relative self-start">
-      <img onClick={handleClick} className="w-[20px] h-[20px] absolute top-3 left-3" src={searchIcon} alt="Search Icon" />
+    <form
+      onSubmit={(e) => e.preventDefault()}
+      className="relative self-start w-full"
+    >
+      <img
+        className="w-[20px] h-[20px] absolute top-3 left-3"
+        src={searchIcon}
+        alt="Search Icon"
+      />
+      <label htmlFor="search" className="text-[0]">
+        Search Posts
+      </label>
       <input
-        className={
-          !input
-            ? "pl-10 px-4 py-2 rounded-full outline-none border-[#67b96b] border-[2px] w-[5px] pr-0 duration-300 ease-in"
-            : "pl-10 px-4 py-2 rounded-full outline-none border-[#67b96b] border-[2px] w-full duration-300 ease-in"
-        }
+        className="pl-10 px-4 py-2 rounded-full outline-none border-[#67b96b] border-[2px] w-full duration-300 ease-in"
         type="text"
+        id="search"
         placeholder="search variety name"
-        value={inputText}
-        onChange={(e) => setInputText(e.target.value)}
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
       />
     </form>
   );

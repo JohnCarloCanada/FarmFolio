@@ -41,7 +41,7 @@ const Hero = () => {
       variants={routeVariants}
       initial="initial"
       animate="final"
-      className="bg-[url('/src/assets/bg-image2.png')] w-full min-h-[calc(100vh-160px)] bg-cover bg-bottom bg-no-repeat px-5 md:px-8"
+      className="bg-[url('/src/assets/bg-image2.png')] w-full min-h-[calc(100vh-150px)] flex flex-col justify-start items-center bg-cover bg-bottom bg-no-repeat px-5 md:px-8"
     >
       <div className="w-[min(100%,1280px)] mx-auto">
         <section className="flex items-center flex-col md:flex-row justify-between">
@@ -89,7 +89,6 @@ const Hero = () => {
         </section>
         <aside className="flex w-full items-center md:justify-start justify-center pb-10 md:pb-0">
           <div className="flex flex-col mt-5 md:mt-24 md:ml-24 w-[241px] font-SegeoUI">
-            <SearchComponent />
             {btnLinks.map((btn, indx) => (
               <Button key={indx} {...btn} />
             ))}

@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
 import FarmFolioContext from "../context/FarmFolioContext";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { routeVariants, childVariants } from "../Animations";
 import { Loader, ErrorHandling } from "../components";
 import { Link } from "react-router-dom";
+import { SearchComponent } from "./Utils";
 
 const CropCards = ({
   image,
@@ -53,7 +54,7 @@ const CropCards = ({
 };
 
 const NewlyRealease = () => {
-  const { farmFolioData, fetchError, isLoading } = useContext(FarmFolioContext);
+  const { searchResults, fetchError, isLoading } = useContext(FarmFolioContext);
 
   return (
     <motion.section
@@ -62,7 +63,7 @@ const NewlyRealease = () => {
       animate="final"
       className="w-full text-center px-5 md:px-8"
     >
-      <section className="w-[min(100%,1100px)] mx-auto mt-5 md:mt-10">
+      <section className="w-[min(100%,1100px)] min-h-[calc(100vh-190px)] flex flex-col justify-center items-center mx-auto mt-5 md:mt-10">
         <div className="flex flex-col">
           <motion.h3
             variants={childVariants}
@@ -83,25 +84,30 @@ const NewlyRealease = () => {
           </p>
         </div>
 
-        <aside className="flex items-start justify-center gap-4 flex-wrap mt-5 mb-5 md:mt-14 md:mb-7">
-          {isLoading && <Loader />}
-          {!isLoading && fetchError && <ErrorHandling error={fetchError} />}
-          {!isLoading &&
-            !fetchError &&
-            farmFolioData.map((crop, index) => {
-              return (
-                <CropCards
-                  key={crop._id}
-                  id={crop._id}
-                  index={index}
-                  image={crop.image}
-                  cropName={crop.cropName}
-                  cropOtherName={crop.cropOtherName}
-                  scientificName={crop.scientificName}
-                />
-              );
-            })}
-        </aside>
+        <section className="flex flex-col justify-center items-center  mt-5 mb-5 md:mt-14 md:mb-7">
+          <div className="w-[241px] mb-5">
+            <SearchComponent />
+          </div>
+          <aside className="flex items-start justify-center gap-4 flex-wrap">
+            {isLoading && <Loader />}
+            {!isLoading && fetchError && <ErrorHandling error={fetchError} />}
+            {!isLoading &&
+              !fetchError &&
+              searchResults.map((crop, index) => {
+                return (
+                  <CropCards
+                    key={crop._id}
+                    id={crop._id}
+                    index={index}
+                    image={crop.image}
+                    cropName={crop.cropName}
+                    cropOtherName={crop.cropOtherName}
+                    scientificName={crop.scientificName}
+                  />
+                );
+              })}
+          </aside>
+        </section>
       </section>
     </motion.section>
   );

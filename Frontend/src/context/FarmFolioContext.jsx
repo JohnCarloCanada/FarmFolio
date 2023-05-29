@@ -6,7 +6,11 @@ const FarmFolioContext = createContext({});
 
 export const FarmFolioProvider = ({ children }) => {
   const [farmFolioData, setFarmFolioData] = useState([]);
-  const { data, fetchError, isLoading } = useAxiosFetch("https://farmfolio.onrender.com/api/crops");
+  const [search, setSearch] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+  const { data, fetchError, isLoading } = useAxiosFetch(
+    "https://farmfolio.onrender.com/api/crops"
+  );
 
   const { coords, error: locationError } = useGetLatandLong();
   const { latitude, longitude } = coords;
@@ -17,6 +21,18 @@ export const FarmFolioProvider = ({ children }) => {
     return () => (isMounted = false);
   }, [data]);
 
+  useEffect(() => {
+    let isSubscribed = true;
+    if (isSubscribed) {
+      const filteredResults = farmFolioData.filter(
+        (crop) =>
+          crop.cropName.toLowerCase().includes(search.toLowerCase()) ||
+          crop.cropOtherName.toLowerCase().includes(search.toLowerCase())
+      );
+      setSearchResults(filteredResults);
+    }
+  }, [farmFolioData, search]);
+
   return (
     <FarmFolioContext.Provider
       value={{
@@ -26,6 +42,9 @@ export const FarmFolioProvider = ({ children }) => {
         latitude,
         longitude,
         locationError,
+        search,
+        setSearch,
+        searchResults,
       }}
     >
       {children}
