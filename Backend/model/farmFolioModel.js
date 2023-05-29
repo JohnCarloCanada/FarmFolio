@@ -30,6 +30,22 @@ const farmFolioSchema = mongoose.Schema(
       type: String,
       required: [true, "Please add second description"],
     },
+    commonPest: {
+      type: Array,
+      required: [true, "Please add common pest"],
+    },
+    reccomClimate: {
+      type: String,
+      required: [true, "Please add reccom climate"],
+    },
+    growthStages: {
+      type: Array,
+      required: [true, "Please add growth stages"],
+    },
+    commonVarr: {
+      type: Array,
+      required: [true, "Please add common varr"],
+    },
   },
   {
     timestamps: true,

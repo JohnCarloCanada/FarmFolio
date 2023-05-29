@@ -26,7 +26,7 @@ const SwiperComponent = ({ children }) => {
       }}
       navigation={windowWidth >= 450 ? false : true}
       modules={[Pagination, Navigation]}
-      className="mySwiper w-[min(100%,1280px)] mt-10 md:mt-14"
+      className="mySwiper w-[min(100%,1280px)] mt-10 md:mt-0"
     >
       {children}
     </Swiper>

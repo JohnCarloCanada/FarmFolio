@@ -15,7 +15,15 @@ const Hero = () => {
 
   const date = new Date();
   const today = date.getDay();
-  const day = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  const day = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
 
   const { isLoading, data } = useQuery(
     {
@@ -33,7 +41,7 @@ const Hero = () => {
       variants={routeVariants}
       initial="initial"
       animate="final"
-      className="bg-[url('/src/assets/bg-image2.png')] w-full min-h-[593px] bg-cover bg-bottom bg-no-repeat px-5 md:px-8"
+      className="bg-[url('/src/assets/bg-image2.png')] w-full min-h-[calc(100vh-160px)] bg-cover bg-bottom bg-no-repeat px-5 md:px-8"
     >
       <div className="w-[min(100%,1280px)] mx-auto">
         <section className="flex items-center flex-col md:flex-row justify-between">
@@ -48,27 +56,39 @@ const Hero = () => {
                 Experience Farming perfection with FarmFolio
               </motion.h1>
               <p className="font-SegoeUI mt-5 text-base md:text-xl text-center md:text-left text-[#4c4c4c]">
-                A comprehensive catagalog of all your farming needs that shows general information about crops, pests, and procedures for pest control
-                and also displays weather forecast.
+                A comprehensive catagalog of all your farming needs that shows
+                general information about crops, pests, and procedures for pest
+                control and also displays weather forecast.
               </p>
             </div>
           </section>
 
           {locationError && <ErrorHandling error={locationError} />}
           {!locationError && isLoading && <Loader />}
-          {!locationError && !isLoading && data && data.message && <ErrorHandling error={data.message} />}
+          {!locationError && !isLoading && data && data.message && (
+            <ErrorHandling error={data.message} />
+          )}
           {!locationError && !isLoading && data && !data.message && (
             <section className="font-SegoeUI mt-10 flex flex-col items-center md:items-end justify-center md:mr-4">
-              <img aria-label="Cloudy Icon" className="w-[40px] h-[40px]" src={cloudy} alt="cloudy" />
-              <span className="text-[#fcb313] text-4xl font-bold mt-2">{Math.round(data?.main?.temp)}°C</span>
+              <img
+                aria-label="Cloudy Icon"
+                className="w-[40px] h-[40px]"
+                src={cloudy}
+                alt="cloudy"
+              />
+              <span className="text-[#fcb313] text-4xl font-bold mt-2">
+                {Math.round(data?.main?.temp)}°C
+              </span>
               <h2 className="mt-1 font-normal">Weather</h2>
               <p className="mt-1 font-normal">{day[today]}</p>
-              <p className="mt-1 whitespace-nowrap font-normal">{data?.weather[0]?.description}</p>
+              <p className="mt-1 whitespace-nowrap font-normal">
+                {data?.weather[0]?.description}
+              </p>
             </section>
           )}
         </section>
         <aside className="flex w-full items-center md:justify-start justify-center pb-10 md:pb-0">
-          <div className="flex flex-col mt-5 md:mt-24 md:ml-10 w-[241px] font-SegeoUI">
+          <div className="flex flex-col mt-5 md:mt-24 md:ml-24 w-[241px] font-SegeoUI">
             <SearchComponent />
             {btnLinks.map((btn, indx) => (
               <Button key={indx} {...btn} />

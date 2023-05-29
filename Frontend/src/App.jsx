@@ -1,7 +1,7 @@
 import { FarmFolioProvider } from "./context/FarmFolioContext";
 import { Routes, Route, useLocation } from "react-router-dom";
-import { Layout, Loader, Missing } from "./components";
-import { Crops, Home, Team } from "./pages";
+import { CropsInfo, Layout, Loader, Missing } from "./components";
+import { Crops, Home, Team, NewlyReleased } from "./pages";
 import { Suspense } from "react";
 import { AnimatePresence } from "framer-motion";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -19,8 +19,13 @@ function RoutesWithAnimation() {
     <Routes location={location} key={location.key}>
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
-        <Route path="/Crops" element={<Crops />} />
+        <Route path="/Crops">
+          <Route index element={<Crops />} />
+          <Route path="/Crops/:id" element={<CropsInfo />} />
+        </Route>
+
         <Route path="/Team" element={<Team />} />
+        <Route path="/NewlyReleased" element={<NewlyReleased />} />
         <Route path="*" element={<Missing />} />
       </Route>
     </Routes>
