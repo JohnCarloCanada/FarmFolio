@@ -8,8 +8,13 @@ const CropsInfo = () => {
   const { id } = useParams();
   const crop = farmFolioData.filter((crop) => crop._id === id);
 
-  console.log(crop);
-  return <main>{crop[0].cropName}</main>;
+  return (
+    <section className="w-full px-5 md:px-8">
+      <section className="w-[min(100%,1100px)] mx-auto mt-5 md:mt-10">
+        <div></div>
+      </section>
+    </section>
+  );
 };
 
 export default CropsInfo;
