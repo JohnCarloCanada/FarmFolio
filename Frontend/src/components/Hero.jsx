@@ -41,21 +41,21 @@ const Hero = () => {
       variants={routeVariants}
       initial="initial"
       animate="final"
-      className="bg-[url('/src/assets/bg-image2.png')] w-full min-h-[calc(100vh-150px)] flex flex-col justify-start items-center bg-cover bg-bottom bg-no-repeat px-5 md:px-8"
+      className="bg-[url('/src/assets/bg-image2.png')] w-full min-h-[calc(100vh-150px)] flex flex-col justify-center items-center bg-cover bg-bottom bg-no-repeat px-5 md:px-8"
     >
       <div className="w-[min(100%,1280px)] mx-auto">
-        <section className="flex items-center flex-col md:flex-row justify-between">
+        <section className="flex items-center flex-col md:flex-col lg:flex-row justify-between">
           <section className="flex flex-col">
-            <div className="md:w-[min(100%,650px)] md:ml-10">
+            <div className="w-[min(100%,800x)] lg:w-[min(100%,750px)] md:ml-0 lg:ml-32">
               <motion.h1
                 variants={childVariants}
                 initial="initial"
                 animate="final"
-                className="font-SegoeUI text-4xl md:text-5xl text-center md:text-left mt-4"
+                className="font-SegoeUI text-4xl md:text-5xl text-center md:text-center lg:text-left mt-4"
               >
                 Experience Farming perfection with FarmFolio
               </motion.h1>
-              <p className="font-SegoeUI mt-5 text-base md:text-xl text-center md:text-left text-[#4c4c4c]">
+              <p className="font-SegoeUI mt-5 text-base md:text-xl text-center lg:text-left text-[#4c4c4c]">
                 A comprehensive catagalog of all your farming needs that shows
                 general information about crops, pests, and procedures for pest
                 control and also displays weather forecast.
@@ -69,7 +69,7 @@ const Hero = () => {
             <ErrorHandling error={data.message} />
           )}
           {!locationError && !isLoading && data && !data.message && (
-            <section className="font-SegoeUI mt-10 flex flex-col items-center md:items-end justify-center md:mr-4">
+            <section className="font-SegoeUI mt-10 flex flex-col items-center lg:items-end justify-center md:mr-4">
               <img
                 aria-label="Cloudy Icon"
                 className="w-[40px] h-[40px]"
@@ -88,7 +88,7 @@ const Hero = () => {
           )}
         </section>
         <aside className="flex w-full items-center md:justify-start justify-center pb-10 md:pb-0">
-          <div className="flex flex-col mt-5 md:mt-24 md:ml-24 w-[241px] font-SegeoUI">
+          <div className="flex flex-col mt-5 md:mt-24 md:ml-52 w-[241px] font-SegeoUI">
             {btnLinks.map((btn, indx) => (
               <Button key={indx} {...btn} />
             ))}
